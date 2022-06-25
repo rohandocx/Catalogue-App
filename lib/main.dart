@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_course/utils/routes.dart';
 import 'Pages/Login_page.dart';
 import 'Pages/Home_page.dart';
-// ignore: unused_import
 import 'Themes/Themes.dart';
-// ignore: unused_import
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {

@@ -4,7 +4,7 @@ import 'package:flutter_course/Models/catalog.dart';
 class ItemWidget extends StatelessWidget {
   final Item item;
 
-  const ItemWidget({Key? key, required this.item})
+  const ItemWidget({key,   required this.item})
       : assert(item != null),
         super(key: key);
 
@@ -16,7 +16,7 @@ class ItemWidget extends StatelessWidget {
         onTap: () {
           print("${item.name} pressed");
         },
-        leading: Image.asset("assets/images/iphone_12.jpg"),
+        leading: Image.network(item.image),
         title: Text(item.name),
         subtitle: Text(item.description),
         trailing: Text(
