@@ -43,15 +43,48 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child:(CatalogModel.items!= null)?ListView.builder(
-          itemCount: CatalogModel.items?.length,
-          itemBuilder: (context, index)=>  ItemWidget(
-              item: CatalogModel.items![index],
-            )
-          ,
-        ):Center(
-          child: CircularProgressIndicator(),
-        ),
+        child: (CatalogModel.items != null)
+            ? GridView.builder(
+                // ignore: prefer_const_constructors
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 16,
+                ),
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items![index];
+                  return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: GridTile(
+                        header: Container(
+                          child: Text(item.name,
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 0, 0))),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 146, 243, 178)),
+                        ),
+                        child: Image.network(item.image, 
+                        
+                        fit: BoxFit.cover
+                        ),
+                        footer: Container(
+                          child: Text(item.price.toString(),
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 255, 251, 251))),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ));
+                },
+                itemCount: CatalogModel.items?.length,
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );
