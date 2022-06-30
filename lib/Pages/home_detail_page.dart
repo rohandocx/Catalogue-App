@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_course/Models/catalog.dart';
 import 'package:flutter_course/Themes/Themes.dart';
@@ -13,10 +14,14 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      appBar: AppBar(
+        
+        backgroundColor: context.canvasColor,
+      ),
+      
       bottomNavigationBar:
         Container(
-          color:Colors.white ,
+          color:context.cardColor ,
           child: ButtonBar(
        
           
@@ -27,13 +32,13 @@ class HomeDetailPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
-                // backgroundColor: MaterialStateProperty.all(
-                //   MyTheme.darkblueColor,
-                // ),
+                 backgroundColor: MaterialStateProperty.all(
+                  context.theme.buttonColor,
+                ),
                 shape: MaterialStateProperty.all(StadiumBorder()),
               ),
-              child: "Buy".text.xl.make(),
-            ).wh(100,50),
+              child: "Add to Cart".text.make(),
+            ).wh(120,50),
           ],
       ).p32(),
         ),
@@ -53,22 +58,27 @@ class HomeDetailPage extends StatelessWidget {
                     arcType: VxArcType.CONVEY,
                     edge: VxEdge.TOP,
                  child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                     child: Column(
                     children: [
                       catalog.name.text.xl4
-                        .color(MyTheme.darkblueColor)
+                        .color(context.accentColor)
                         .bold
                         .make(),
                     catalog.description.text
                          .xl
                         .textStyle(context.captionStyle)
                         .make(),
-                    10.heightBox,
+                    6.heightBox,
+                    "Sadipscing et clita no dolores erat rebum diam. No diam at eirmod elitr ipsum lorem et. Aliquyam rebum amet rebum diam stet ipsum nonumy sanctus. Takimata sed diam no stet sit stet et ipsum sanctus, rebum sea kasd kasd sea duo. Sed at et et sed sea sed, consetetur sed."
+                    .text
+                    .textStyle(context.captionStyle)
+                    .make()
+                    .p16(),
                     ],
                   ).py64(),
-                ).expand(),
+                )
                 ))
           ],
         ),

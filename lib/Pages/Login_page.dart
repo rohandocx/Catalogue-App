@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_course/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color:context.canvasColor,      
         child: SingleChildScrollView(
           child: Form(
             child: Column(
@@ -37,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                   "assets/images/welcom.jpeg",
                   fit: BoxFit.cover,
                 ),
-                SizedBox(height: 20.0, child: Text("DocX")),
+                SizedBox(height: 20.0, child: Text("")),
                 Text(
                   "Hello! $name",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                             hintText: "Enter Username", labelText: "Username"),
                         // validator: (value) {
-                        //   if (value!.isEmpty){
+                        //   if (value?.isEmptyOrNull){
                         //     return "Username cannot be Empty";
                         //   }else {
                         //     return null;
@@ -65,20 +66,20 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             hintText: "Enter password", labelText: "Password"),
-                        // validator: (value) {
-                        //   if (value!.isEmpty) {
-                        //     return "Username cannot be Empty";
+                        //  validator: (value) {
+                        //    if (value.isEmpty) {
+                        //      return "Username cannot be Empty";
                         //   } else if (value.length< 6) {
-                        //     return "Username must be at least 6 characters";
-                        //   }
-                        //   return null;
-                        // },
+                        //      return "Username must be at least 6 characters";
+                        //    }
+                        //    return null;
+                        //  },
                       ),
                       SizedBox(height: 20.0),
                       Material(
-                        color: Colors.deepPurple,
+                        color:context.theme.buttonColor,
                         borderRadius:
                             BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
